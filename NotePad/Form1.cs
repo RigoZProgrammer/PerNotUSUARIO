@@ -63,5 +63,107 @@ namespace NotePad
         {
             Application.Exit(); //lo mismo que close();
         }
+
+        private void fuenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //el tipo de letra debe de estar en las maquinas donde se vaya a usar la app
+            FontDialog dig = new FontDialog();//quiero crear una variable llamada dig
+            if (dig.ShowDialog() == DialogResult.OK)
+            {
+                string fontName;
+                float fontSize;
+                fontName = dig.Font.Name; //tipo de letra es igual al de la variable 
+                fontSize = dig.Font.Size;//tamaño de la letra es igual a lo que tengas en la varible
+                richTextBox1.Font = dig.Font;//toma todas las fuentes de windows xD
+            }
+        }
+
+        private void rojoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ForeColor = Color.Red;
+        }
+
+        private void verdeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ForeColor = Color.Green;
+        }
+
+        private void azulToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ForeColor = Color.Blue;
+        }
+
+        private void naranjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ForeColor = Color.Orange;
+        }
+
+        private void aquaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ForeColor = Color.Aqua;
+        }
+
+        private void negroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ForeColor = Color.Black;
+        }
+
+        private void amarilloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.ForeColor = Color.Yellow;
+        }
+
+        private void negroToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            richTextBox1.BackColor = Color.Black;
+        }
+
+        private void azulToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            richTextBox1.BackColor = Color.Blue;
+        }
+
+        private void blancoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.BackColor = Color.White;
+        }
+
+        private void zoomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //ZOOM +
+            float currentSize;
+            currentSize = richTextBox1.Font.Size;
+            currentSize += 2.0F;//aumenta el tamaño de letra?
+            richTextBox1.Font = new Font(richTextBox1.Font.Name, currentSize, richTextBox1.Font.Style,
+                richTextBox1.Font.Unit);//esta sustituyendo el tipo de fuente, no cambia nombre ni estilo por lo declarado entre parentesis, pero reajusta el tamaño de la letra
+
+        }
+
+        private void zoomToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //ZOOM -
+            float currentSize;
+            currentSize = richTextBox1.Font.Size;
+            currentSize -= 2.0F;//aumenta el tamaño de letra?
+            if (currentSize <= 2)//protege para que el programa no pete por reducir algun tamaño menor de la constante lol
+            {
+                currentSize = 2;
+            }
+            else
+            {
+                richTextBox1.Font = new Font(richTextBox1.Font.Name, currentSize, richTextBox1.Font.Style,
+                richTextBox1.Font.Unit); //lol, el mas por un menos
+            }
+        }
+
+        private void limpiarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = " ";
+        }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Desarrollado pot Bruno Zamora 5°B");
+        }
     }
 }
